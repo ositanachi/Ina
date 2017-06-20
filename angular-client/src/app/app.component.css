@@ -1,6 +1,9 @@
-h1 {
+/*h1 {
     color: white;
     font-family: Open-sans;
+}*/
+p {
+    font-family: 'Roboto', sans-serif;
 }
 
 div {
@@ -19,8 +22,15 @@ div {
   text-align: center;
   border: 2px dashed #f69c55*/;
 }
-span {
+h1 {
   /*display: inline-block;
   vertical-align: middle;
   line-height: normal;*/
+  font-family: 'Comfortaa', cursive;
+  font-size: 40px;
+}
+
+md-input-container {
+    background-color: white;
+    width: 250px;
 }

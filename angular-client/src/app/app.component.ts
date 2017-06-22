@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { SearchService } from './search.service';
+import { Component} from '@angular/core'; //imports the component portions of the core angular library
+import { SearchService } from './search.service'; //imports the SearchService class from the Search.service.ts file
 
-@Component({
+@Component({ //An Angular class responsible for exposing data to a view and handling most of the view’s display and user-interaction logic
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'] //an array of styles
 })
 
 export class AppComponent {
@@ -19,4 +19,7 @@ export class AppComponent {
         this.result = JSON.stringify(data);
       });
   }
+
+
 }
+

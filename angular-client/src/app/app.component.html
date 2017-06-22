@@ -10,8 +10,8 @@
     <md-input-container>
       <input mdInput [(ngModel)]="term" name="term" placeholder="" type="text" required>
     </md-input-container>
-    <button md-raised-button (click)="search()">Search</button>
+    <button md-raised-button (click)="search()" routerLink="/test.component.html" routerLinkActive="testComponent">Search</button>
     <!--<input type="button" onclick="location.href='https://www.google.com/search?q=howard+sueing&oq=Howard+Sueing&aqs=chrome.0.69i59.2087j0j4&sourceid=chrome&ie=UTF-8';" value="Search" />-->
-
   </div>
+  <router-outlet></router-outlet>
 </form>

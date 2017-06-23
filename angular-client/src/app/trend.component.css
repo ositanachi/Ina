@@ -15,23 +15,7 @@
 div.relative{
   position: relative;
 }
-
 li{
-    background-color:#FFFFFF;
     list-style-position:inside;
-    border: 2px solid black;
     font-family: 'Roboto', sans-serif;
 }
-
-
-/*div {
-    margin: auto;
-    height: 200px;
-    line-height: normal;
-    width: 200px;
-    position: absolute;
-    top: 0;
-    bottom: 45%;
-    left: 0;
-    right: 0;
-}*/

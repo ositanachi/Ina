@@ -8,15 +8,18 @@ import { SearchService } from './search.service';
 import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import {testComponent} from './test.component';
+import {trendComponent} from './trend.component';
 
 const appRoutes: Routes = [
-  {path: 'test.component.html', component: testComponent }
+  {path: 'test.component.html', component: testComponent },
+  {path: 'trend.component.html', component: trendComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    testComponent
+    testComponent,
+    trendComponent
   ],
   imports: [
     BrowserModule,

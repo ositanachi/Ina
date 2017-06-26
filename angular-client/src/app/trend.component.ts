@@ -6,5 +6,5 @@ import {Component} from '@angular/core';
 })
 
 export class trendComponent{
-    trends = ['Donald Trump', 'Steve Harvey', 'kim Kardashian', 'The Warriors', 'Iphone 8', 'Russia', 'The Cavaliers', 'Nintendo Switch'];
+    trends = ['Donald Trump', 'Steve Harvey', 'Kim Kardashian', 'The Warriors', 'Iphone 8', 'Russia', 'The Cavaliers', 'Nintendo Switch'];
 }

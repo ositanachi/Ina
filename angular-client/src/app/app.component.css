@@ -16,6 +16,7 @@ div {
     bottom: 45%;
     right: 0;
     left: 0;
+    /*transform: translate(0px, 100px);*/
   /*height: 200px;
   line-height: 200px;
   text-align: center;

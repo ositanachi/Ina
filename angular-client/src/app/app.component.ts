@@ -14,6 +14,7 @@ export class AppComponent {
   constructor(private searchService: SearchService) {}
 
   search() {
+    document.getElementById("div1").style.transform = "translateY(-100px)";
     this.searchService.search(this.term)
       .subscribe(data => {
         this.result = JSON.stringify(data);

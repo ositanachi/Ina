@@ -9,6 +9,9 @@ import static spark.Spark.get;
 import static spark.Spark.options;
 import static spark.Spark.port;
 
+import java.util.*;
+import java.lang.*;
+
 @Slf4j
 public class App {
 
@@ -51,7 +54,10 @@ public class App {
     //GSON is used to map to json.
     Gson gson = new Gson();
 
-
+    HashMap<String, String> mock = new HashMap();
+    mock.put("Howard", "https://www2.howard.edu/");
+    mock.put("What is life", "42");
+    mock.put("Search", "Welcome to Ina, a fiery search engine");
 
     //the route callback is a lambda function
     get("/", (req, res) -> {
@@ -61,7 +67,7 @@ public class App {
     get(
       "/search",
       "application/json",
-      (req, res) -> ResultDTO.builder().term(req.queryMap("q").value()),
+      (req, res) -> mock.get(req.queryMap("q").value()),
       gson::toJson); // <- this is called a method reference
   }
 }

@@ -2,11 +2,14 @@
   <div id="div1" >
     <h1>
       Ina
-    </h1> 
-    <!--<p>
-      You just searched for {{term}} and the result is {{result}}
-    </p>-->
+    </h1>
 
+    <p>
+      You just searched for {{term}} and the result is {{result}}
+    </p>
+
+    <br>
+    
     <md-input-container routerLink="/trend.component.html"> 
       <input mdInput [(ngModel)]="term" name="term" placeholder="" type="text" required >
     </md-input-container> <i class="material-icons white" (click)="search()" routerLink="/test.component.html" >search</i>

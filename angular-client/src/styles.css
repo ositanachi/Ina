@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 /*p {
     font-family: 'Roboto', sans-serif;
 }*/
@@ -11,3 +11,10 @@ h1 {
   font-family: 'Comfortaa', cursive;
   font-size: 90px;
 }
+
+h4 {
+    color: white;
+    font-family: 'Comfortaa', cursive;
+}
+
+.material-icons.white { color: white; }

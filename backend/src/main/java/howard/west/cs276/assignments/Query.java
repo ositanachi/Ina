@@ -47,7 +47,7 @@ public class Query {
 		return resultArray;
 	}
 
-	public static List<PostingList> mainQuery(String input, String query) {
+	public static List<String> mainQuery(String input, String query) {
 
 	    try {
 
@@ -111,15 +111,19 @@ public class Query {
 
 		    List<Integer> list1 = postingLists.get(0).getList();
 		    List<Integer> result = new ArrayList();
-		    // List<String> docNames = new ArrayList();
+		    List<String> docNames = new ArrayList();
+		    if (postingLists.size() == 1){
+		    	result = list1;
+		    }
 		    for (int i = 1; i < postingLists.size(); i++){
 		    	List<Integer> list2 = postingLists.get(i).getList();
 		    	result = findIntersection(list1, list2);
 		    	list1 = result;
 		    }
 		    for (Integer item : result){
-		   		System.out.println(docDict.get(item));
+		   		docNames.add(docDict.get(item));
 		    }
+
 		    /*
 		     * TODO: Your code here
 		     *       Perform query processing with the inverted index.
@@ -128,7 +132,7 @@ public class Query {
 		     *       line, sorted in lexicographical order.
 		     */
 		indexFile.close();
-		return postingLists;
+		return docNames;
 
 		} catch (Exception e) { System.out.println("ERROR " + e); }
 

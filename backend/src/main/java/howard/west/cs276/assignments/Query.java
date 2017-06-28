@@ -112,6 +112,7 @@ public class Query {
 		    List<Integer> list1 = postingLists.get(0).getList();
 		    List<Integer> result = new ArrayList();
 		    List<String> docNames = new ArrayList();
+		    List<String> minDocNames = new ArrayList();
 		    if (postingLists.size() == 1){
 		    	result = list1;
 		    }
@@ -123,6 +124,14 @@ public class Query {
 		    for (Integer item : result){
 		   		docNames.add(docDict.get(item));
 		    }
+		    
+		    if (docNames.size() > 10){
+		    	for (int k = 0; k < 10; k++){
+		    		minDocNames.add(docNames.get(k));
+		    	}
+		    }else{
+		    	minDocNames = docNames;
+		    }
 
 		    /*
 		     * TODO: Your code here
@@ -132,7 +141,7 @@ public class Query {
 		     *       line, sorted in lexicographical order.
 		     */
 		indexFile.close();
-		return docNames;
+		return minDocNames;
 
 		} catch (Exception e) { System.out.println("ERROR " + e); }
 

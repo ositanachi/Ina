@@ -2,15 +2,14 @@ package howard.west;
 
 import com.google.gson.Gson;
 import howard.west.dto.ResultDTO;
+import howard.west.cs276.assignments.Index;
+import howard.west.cs276.assignments.Query;
 import lombok.extern.slf4j.Slf4j;
 
 import static spark.Spark.before;
 import static spark.Spark.get;
 import static spark.Spark.options;
 import static spark.Spark.port;
-
-import java.util.*;
-import java.lang.*;
 
 @Slf4j
 public class App {
@@ -54,20 +53,20 @@ public class App {
     //GSON is used to map to json.
     Gson gson = new Gson();
 
-    HashMap<String, String> mock = new HashMap();
-    mock.put("Howard", "https://www2.howard.edu/");
-    mock.put("What is life", "42");
-    mock.put("Search", "Welcome to Ina, a fiery search engine");
+    String indexPath = "output/tiny-index";
+    // TODO: Copy your full sized generated index to this path and uncomment this line:
+    // String indexPath = "output/index";
 
     //the route callback is a lambda function
     get("/", (req, res) -> {
       log.info("Loading the index");
-      return "Welcome to Howard West!";
+      return "hello world";
     });
     get(
       "/search",
       "application/json",
-      (req, res) -> mock.get(req.queryMap("q").value()),
+      (req, res) -> Query.mainQuery(indexPath, req.queryMap("q").value()),
       gson::toJson); // <- this is called a method reference
+
   }
 }

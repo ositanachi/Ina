@@ -7,13 +7,10 @@
   line-height: normal;
   /*width: 200px;*/
   position: absolute;
-  top: 25%;
+  top: 35%;
   bottom: 0;
   left: 0;
   right: 0;
-}
-div.relative{
-  position: relative;
 }
 
 li{

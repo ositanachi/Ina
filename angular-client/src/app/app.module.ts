@@ -7,8 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchService } from './search.service';
 import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
-import {testComponent} from './test.component';
-import {trendComponent} from './trend.component';
+import { testComponent } from './test.component';
+import { trendComponent } from './trend.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import {MdCardModule} from '@angular/material';
+import {MaterialModule} from '@angular/material';
 
 const appRoutes: Routes = [
   {path: 'test.component.html', component: testComponent },
@@ -23,6 +26,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
     FormsModule,
     MdInputModule,

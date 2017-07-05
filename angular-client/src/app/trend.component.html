@@ -1,8 +1,18 @@
-<div id="inner-div">
-  <h4>Trending Searches</h4><i class="material-icons white">trending_up</i>
-  <ul>
-    <li *ngFor="let trend of trends">
-      {{ trend }}
-    </li>
-  </ul>
+<div class="container">
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayout="center center">
+      <div>
+        <h4>Trending Searches</h4>
+      </div>
+      <div><i class="material-icons white">trending_up</i>
+      </div>
+    </div>
+    <ul>
+      <div>
+        <li *ngFor="let trend of trends">
+          {{ trend }}
+        </li>
+      </div>
+    </ul>
+  </div>
 </div>

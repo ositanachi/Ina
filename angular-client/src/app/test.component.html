@@ -1,7 +1,15 @@
-<div id="inner-div">
-  <ul >
-    <li *ngFor="let result of results">
-      {{result}}
-    </li>
-  </ul>
+<div fxLayoutAlign="center center">
+  <div>
+    <ul>
+      <div>
+        <li *ngFor="let result of results">
+          <md-card>
+            <md-card-content>
+              {{ result }}
+            </md-card-content>
+          </md-card>
+        </li>
+      </div>
+    </ul>
+  </div>
 </div>

@@ -4,17 +4,17 @@
       Ina
     </h1>
 
-    <p>
-      You just searched for {{term}} and the result is {{result}}
-    </p>
+    <!--<p>
+      You just searched for {{term}} and the result is {{result}}.
+    </p>-->
 
     <br>
     
     <md-input-container routerLink="/trend.component.html"> 
       <input mdInput [(ngModel)]="term" name="term" placeholder="" type="text" required >
-    </md-input-container> <i class="material-icons white" (click)="search()" routerLink="/test.component.html" >search</i>
+    </md-input-container> <i class="material-icons white" (click)="search()">search</i>
+    <!--/test.component.html"-->
     <!--<button md-raised-button (click)="search()" routerLink="/test.component.html" >Search</button>-->
-    
   </div>
   <router-outlet></router-outlet>
 </form>

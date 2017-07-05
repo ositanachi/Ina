@@ -1,6 +1,6 @@
 import { Component} from '@angular/core'; //imports the component portions of the core angular library
 import { SearchService } from './search.service'; //imports the SearchService class from the Search.service.ts file
-
+import {Router} from '@angular/router';
 @Component({ //An Angular class responsible for exposing data to a view and handling most of the view’s display and user-interaction logic
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,10 +9,9 @@ import { SearchService } from './search.service'; //imports the SearchService cl
 
 export class AppComponent {
   term: string;
-  result: string;
-
-
-  constructor(private searchService: SearchService) {}
+  //result: string;
+  result;
+  constructor(private searchService: SearchService, private router: Router) {}
 
 slide(){
   var elem = document.getElementById("div1");
@@ -33,13 +32,14 @@ slide(){
 
   search() {
     //document.getElementById("div1").style.transform = "translateY(-100px)";
-    this.slide();
     this.searchService.search(this.term)
       .subscribe(data => {
-        this.result = JSON.stringify(data);
+        //this.result = JSON.stringify(data);
+        this.result = data;
+        this.searchService.setResult(this.result);
+        this.slide();
+        this.router.navigate(['/test.component.html']);
       });
   }
-
-
 }
 

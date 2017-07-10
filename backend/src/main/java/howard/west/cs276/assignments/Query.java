@@ -141,7 +141,7 @@ public class Query {
 		     *       line, sorted in lexicographical order.
 		     */
 		indexFile.close();
-		return minDocNames;
+		return docNames;
 
 		} catch (Exception e) { System.out.println("ERROR " + e); }
 

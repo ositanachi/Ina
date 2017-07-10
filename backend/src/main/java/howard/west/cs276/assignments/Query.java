@@ -103,8 +103,13 @@ public class Query {
 			// Get the term id for this token using the termDict map.
 			Integer termId = termDict.get(queryToken);
 			if (termId == null) {
-			    noResults = true;
-			    continue;
+				Integer term = termDict.get(queryToken.toLowerCase());
+			    if (term == null){
+			    	noResults = true;
+			    	continue;
+				}else{
+					postingLists.add(readPosting(indexChannel, term));
+				}
 			}
 			else postingLists.add(readPosting(indexChannel, termId));
 		    }

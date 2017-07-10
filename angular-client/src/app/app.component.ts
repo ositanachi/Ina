@@ -9,35 +9,16 @@ import {Router} from '@angular/router';
 
 export class AppComponent {
   term: string;
-  //result: string;
-  result;
+  result; //initializes a result of type any to hold the json array that is returned. 
   constructor(private searchService: SearchService, private router: Router) {}
 
-slide(){
-  var elem = document.getElementById("div1");
-  var pos = document.getElementById("div1").offsetHeight;
-  var id = setInterval(frame, 5);
-    function frame() {
-      if(getComputedStyle(elem, null).bottom < '600px'){
-        if (pos >=600) {
-            clearInterval(id);
-        } else {
-            pos+=4; 
-            //elem.style.bottom = pos + 'px'; 
-            document.getElementById("div1").style.bottom = pos + 'px';
-        }
-      }
-    }
-}
+
 
   search() {
-    //document.getElementById("div1").style.transform = "translateY(-100px)";
     this.searchService.search(this.term)
       .subscribe(data => {
-        //this.result = JSON.stringify(data);
         this.result = data;
         this.searchService.setResult(this.result);
-        this.slide();
         this.router.navigate(['/test.component.html']);
       });
   }

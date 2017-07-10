@@ -7,14 +7,25 @@ import { AppComponent } from './app.component'
 })
 export class testComponent{
     constructor(private searchService: SearchService) {}
-    timeout: 3000;
-    /*results;
-    displayResult(){
-        this.results = this.searchService.getResult();
+    pagenum = 1;
+    begin = 0;
+    end = 10;
+    all_results = this.searchService.getResult();
+    results = this.all_results.slice(this.begin, this.end);
+    pageNext(){
+        if(this.end < this.all_results.length){
+            this.begin += 10;
+            this.end += 10;
+            this.pagenum++;
+            this.results = this.all_results.slice(this.begin, this.end);
+        }
     }
-    wait(){
-    setTimeout(this.displayResult, this.timeout);
-    }*/
-    results = this.searchService.getResult();
-    //results = ['Cats', 'Dogs', 'Beagles', 'Chicken', 'Yodalaheehoo', 'I', 'Am', 'Not', 'A', 'Human'];
+    pagePrev(){
+        if(this.begin >= 10){
+            this.begin -= 10;
+            this.end -= 10;
+            this.pagenum--;
+            this.results = this.all_results.slice(this.begin, this.end);
+        }
+    }
 }

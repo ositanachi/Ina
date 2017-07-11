@@ -9,17 +9,15 @@ import {Router} from '@angular/router';
 
 export class AppComponent {
   term: string;
-  result; //initializes a result of type any to hold the json array that is returned. 
+  result; //initializes a varialbe of type any to hold the array that is recieved from the search function. 
   constructor(private searchService: SearchService, private router: Router) {}
-
-
 
   search() {
     this.searchService.search(this.term)
       .subscribe(data => {
-        this.result = data;
-        this.searchService.setResult(this.result);
-        this.router.navigate(['/test.component.html']);
+        this.result = data;//stores an array of the results in the result variable
+        this.searchService.setResult(this.result);//stores the result in searchServices result variable
+        this.router.navigate(['/test.component.html']);//routes to the results page
       });
   }
 }

@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Arrays;
 
 public class Query {
 
@@ -47,7 +50,7 @@ public class Query {
 		return resultArray;
 	}
 
-	public static List<String> mainQuery(String input, String query) {
+	public static List<List<String>> mainQuery(String input, String query) {
 
 	    try {
 
@@ -102,9 +105,10 @@ public class Query {
 		    for (String queryToken : queryTokens) {
 			// Get the term id for this token using the termDict map.
 			Integer termId = termDict.get(queryToken);
+
 			if (termId == null) {
 				Integer term = termDict.get(queryToken.toLowerCase());
-			    if (term == null){
+				if (term == null){
 			    	noResults = true;
 			    	continue;
 				}else{
@@ -137,7 +141,75 @@ public class Query {
 		    }else{
 		    	minDocNames = docNames;
 		    }
+			
+			HashMap<String, String> maptoDescription = new HashMap<String, String>();
+			List<List<String>> descriptionArr = new ArrayList<List<String>>();
+			for (int k = 0; k < docNames.size(); k++){
+				descriptionArr.add(new ArrayList<String>());
+			}
+			for (int i = 0; i < docNames.size(); i++){
+				String relativeAdd = docNames.get(i);
+				relativeAdd = "data/" + relativeAdd;
+				File newfile = new File(relativeAdd);
+				Scanner scan = new Scanner(newfile);
+				int count = 0;
+				String st = "";
+				while (scan.hasNextLine() && (count < queryTokens.length)) {
+					List<String> test = new ArrayList<String>(Arrays.asList(scan.nextLine().split(" ")));
+					int ind = test.indexOf(queryTokens[count]);
+					
+					if (test.contains(queryTokens[count])){
 
+				    	if ((test.size() > ind + 15) && (ind - 15 > 0)){
+				    		int c = ind - 15;
+				    		while (c < ind + 15){
+				    			st = st+" "+test.get(c);
+				    			c++;
+				    		}
+					     	//st = st + test.get(ind - 4) +" " +test.get(ind - 3) +" " + test.get(ind - 2) +" "+ test.get(ind - 1) +" "+ test.get(ind) +" "+ test.get(ind + 1) +" "+ test.get(ind + 2) +" "+ test.get(ind + 3) +" "+ test.get(ind + 4);
+				        }else if ((test.size() > ind + 20)){
+				        	int c = ind;
+				    		while (c < ind + 20){
+				    			st = st+" "+test.get(c);
+				    			c++;
+				    		}
+						 	//st = test.get(ind) +" "+ test.get(ind + 1) +" "+ test.get(ind + 2) +" "+ test.get(ind + 3) +" "+ test.get(ind + 4);
+					    }else if (ind - 20 > 0){
+					    	int c = ind - 20;
+				    		while (c <= ind ){
+				    			st = st+" "+test.get(c);
+				    			c++;
+				    		}
+						 	//st = st +test.get(ind - 4) +" " +test.get(ind - 3) +" "+ test.get(ind - 2) +" " +test.get(ind - 1) +" "+ test.get(ind);
+					    }else if (ind - 10 > 0){
+					    	int c = ind - 10;
+				    		while (c <= ind ){
+				    			st = st+" "+test.get(c);
+				    			c++;
+				    		}
+					    }else if (test.size() > ind + 10){
+					    	int c = ind + 10;
+					    	while (c < ind + 10){
+					    		st = st +" "+test.get(c);
+					    	}
+					    }
+						count++;
+					}
+				}
+				descriptionArr.get(i).add(docNames.get(i));
+				descriptionArr.get(i).add(st);
+				scan.close();
+			}
+
+			// String relativeAdd = docNames.get(0);
+			// //InputStream is = new InputStream(relativeAdd);
+
+			// File newfile = new File("data/0/50years.stanford.edu_");
+			// Scanner scan = new Scanner(newfile);
+			// String str = scan.next();
+			// System.out.println(str);
+			// String str2 = scan.next();
+			// System.out.println(str2);
 		    /*
 		     * TODO: Your code here
 		     *       Perform query processing with the inverted index.
@@ -146,7 +218,7 @@ public class Query {
 		     *       line, sorted in lexicographical order.
 		     */
 		indexFile.close();
-		return docNames;
+		return descriptionArr;
 
 		} catch (Exception e) { System.out.println("ERROR " + e); }
 

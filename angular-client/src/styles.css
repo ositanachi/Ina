@@ -18,3 +18,7 @@ h4 {
 }
 
 .material-icons.white { color: white; }
+.material-icons.white.small {
+    color: white;
+    font-size: 18px;
+}

@@ -1,20 +1,20 @@
 <form id="form1" routerLinkActive="active-link">
-  <div id="div1" fxLayout="column" fxLayoutAlign="center center" >
+  <div id="div1" fxLayout="column" fxLayoutAlign="center center">
     <h1>
-      Ina
+      <a href="http://frontend.howard.test:4200/">Ina</a>
     </h1>
 
     <div fxLayout="row" fxLayout="center center">
-      <div>
+      <div class="wrapper">
         <!--<md-input-container routerLink="/trend.component.html">-->
-        <md-input-container>        
-          <input mdInput [(ngModel)]="term" name="term" placeholder="" type="text" required>
+        <md-input-container>
+          <input mdInput [(ngModel)]="term" (keyup.enter)="search()" name="term" placeholder="" type="text" required>
         </md-input-container>
+        <!--Clear icon. Clears search query upon click-->
+        <i class="material-icons white small" (click)="term=''">clear</i>
       </div>
       <div>
-        <button (click)="term = ''">clear</button>
-      </div>
-      <div>
+        <!--Search icon. Search query upon click-->
         <i class="material-icons white" (click)="search()">search</i>
       </div>
     </div>

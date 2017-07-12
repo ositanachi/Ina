@@ -1,12 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
-/*p {
-    font-family: 'Roboto', sans-serif;
-}*/
 h1 {
-  /*display: inline-block;
-  vertical-align: middle;
-  line-height: normal;*/
   color: white;
   font-family: 'Comfortaa', cursive;
   font-size: 90px;
@@ -16,9 +10,23 @@ h4 {
     color: white;
     font-family: 'Comfortaa', cursive;
 }
-
+/*Change colour of icon*/
 .material-icons.white { color: white; }
-.material-icons.white.small {
-    color: white;
+
+/*Used to change the size of the icons*/
+.material-icons.small {
     font-size: 18px;
+    /*right: 0;
+    top: 0;
+    position: absolute;*/
+}
+
+.material-icons:hover{
+    cursor: pointer;
+}
+
+
+.wrapper {
+    display:inline-block;
+    position:relative;
 }

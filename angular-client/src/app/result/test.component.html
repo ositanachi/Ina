@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center">
   <div>
     <ul>
       <div>
@@ -10,7 +10,7 @@
               <a href="http://{{linker(result[0])}}" target="_blank"> {{result[0].slice(2)}} </a>
             </md-card-title>
             <md-card-subtitle>
-            {{linker(result[0])}}
+              {{linker(result[0])}}
             </md-card-subtitle>
             <md-card-content>
               {{ result[1] }}
@@ -22,11 +22,11 @@
     </ul>
     <div fxLayoutAlign="center">
       <!--implementation of pagination-->
-      <button (click)="pagePrev()">prev</button>
+      <i class="material-icons white" (click)="pagePrev()" (click)="scrollTop()">arrow_back</i>
       <!--moves to a previous page-->
       {{pagenum}}
       <!--current page number-->
-      <button (click)="pageNext()">next</button>
+      <i class="material-icons white" (click)="pageNext()" (click)="scrollTop()">arrow_forward</i>
       <!--moves to the next page-->
     </div>
   </div>

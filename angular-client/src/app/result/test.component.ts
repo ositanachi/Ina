@@ -35,4 +35,10 @@ export class testComponent{
             this.results = this.all_results.slice(this.begin, this.end);//changes displayed results
         }
     }
+    scrollTop(){
+        /*if(this.all_results >= 10){
+            window.scrollTo(0, 0);
+        }*/
+        window.scrollTo(0,0);
+    }
 }

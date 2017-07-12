@@ -6,16 +6,16 @@
 
     <div fxLayout="row" fxLayout="center center">
       <div class="wrapper">
-        <!--<md-input-container routerLink="/trend.component.html">-->
-        <md-input-container>
-          <input mdInput [(ngModel)]="term" (keyup.enter)="search()" name="term" placeholder="" type="text" required>
-        </md-input-container>
-        <!--Clear icon. Clears search query upon click-->
-        <i class="material-icons white small" (click)="term=''">clear</i>
-      </div>
-      <div>
         <!--Search icon. Search query upon click-->
         <i class="material-icons white" (click)="search()">search</i>
+        <!--<md-input-container routerLink="/trend.component.html">-->
+        <md-input-container>
+          <input mdInput [(ngModel)]="term" (ngModelChange)="hideElement=true" (keyup.enter)="search()"
+          name="term" placeholder="" type="text">
+        </md-input-container>
+        <!--Clear icon Clears search query upon click-->
+        <i class="material-icons white small" (click)="term=''" (click)="hideElement=false"
+         *ngIf="hideElement">clear</i>
       </div>
     </div>
   </div>

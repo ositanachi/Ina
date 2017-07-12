@@ -39,7 +39,9 @@ public class Query {
 		fc.position(posDict.get(termId));
 		return index.readPosting(fc);
 	}
-
+	/*
+	 *Returns an arraylist containing the common elements of the two arrays passed as parameters
+	 * */
 	private static List<Integer> findIntersection(List<Integer> arrayList1, List<Integer> arrayList2){
 		List<Integer> resultArray = new ArrayList();
 		for (int i = 0; i < arrayList1.size(); i++){
@@ -50,7 +52,7 @@ public class Query {
 		return resultArray;
 	}
 
-	public static List<List<String>> mainQuery(String input, String query) {
+	public static List<List<String>> mainQuery(String input, String query) throws Exception{
 
 	    try {
 
@@ -117,7 +119,7 @@ public class Query {
 			}
 			else postingLists.add(readPosting(indexChannel, termId));
 		    }
-
+		    //Get the docNames that correspond to the queries
 		    List<Integer> list1 = postingLists.get(0).getList();
 		    List<Integer> result = new ArrayList();
 		    List<String> docNames = new ArrayList();
@@ -134,24 +136,20 @@ public class Query {
 		   		docNames.add(docDict.get(item));
 		    }
 		    
-		    if (docNames.size() > 10){
-		    	for (int k = 0; k < 10; k++){
-		    		minDocNames.add(docNames.get(k));
-		    	}
-		    }else{
-		    	minDocNames = docNames;
-		    }
-			
-			HashMap<String, String> maptoDescription = new HashMap<String, String>();
+		   //2d array that contains the search result URL and the Description
 			List<List<String>> descriptionArr = new ArrayList<List<String>>();
 			for (int k = 0; k < docNames.size(); k++){
 				descriptionArr.add(new ArrayList<String>());
 			}
+			//Scan the data files to get the description
+			//Description contains few words before and after the search term
 			for (int i = 0; i < docNames.size(); i++){
+								
 				String relativeAdd = docNames.get(i);
 				relativeAdd = "data/" + relativeAdd;
 				File newfile = new File(relativeAdd);
 				Scanner scan = new Scanner(newfile);
+
 				int count = 0;
 				String st = "";
 				while (scan.hasNextLine() && (count < queryTokens.length)) {
@@ -166,21 +164,21 @@ public class Query {
 				    			st = st+" "+test.get(c);
 				    			c++;
 				    		}
-					     	//st = st + test.get(ind - 4) +" " +test.get(ind - 3) +" " + test.get(ind - 2) +" "+ test.get(ind - 1) +" "+ test.get(ind) +" "+ test.get(ind + 1) +" "+ test.get(ind + 2) +" "+ test.get(ind + 3) +" "+ test.get(ind + 4);
+					     	
 				        }else if ((test.size() > ind + 20)){
 				        	int c = ind;
 				    		while (c < ind + 20){
 				    			st = st+" "+test.get(c);
 				    			c++;
 				    		}
-						 	//st = test.get(ind) +" "+ test.get(ind + 1) +" "+ test.get(ind + 2) +" "+ test.get(ind + 3) +" "+ test.get(ind + 4);
+						 	
 					    }else if (ind - 20 > 0){
 					    	int c = ind - 20;
 				    		while (c <= ind ){
 				    			st = st+" "+test.get(c);
 				    			c++;
 				    		}
-						 	//st = st +test.get(ind - 4) +" " +test.get(ind - 3) +" "+ test.get(ind - 2) +" " +test.get(ind - 1) +" "+ test.get(ind);
+						 	
 					    }else if (ind - 10 > 0){
 					    	int c = ind - 10;
 				    		while (c <= ind ){
@@ -201,22 +199,6 @@ public class Query {
 				scan.close();
 			}
 
-			// String relativeAdd = docNames.get(0);
-			// //InputStream is = new InputStream(relativeAdd);
-
-			// File newfile = new File("data/0/50years.stanford.edu_");
-			// Scanner scan = new Scanner(newfile);
-			// String str = scan.next();
-			// System.out.println(str);
-			// String str2 = scan.next();
-			// System.out.println(str2);
-		    /*
-		     * TODO: Your code here
-		     *       Perform query processing with the inverted index.
-		     *       Make sure to print to stdout the list of documents
-		     *       containing the query terms, one document file on each
-		     *       line, sorted in lexicographical order.
-		     */
 		indexFile.close();
 		return descriptionArr;
 

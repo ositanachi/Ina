@@ -10,14 +10,15 @@ import {Router} from '@angular/router';
 export class AppComponent {
   term: string;
   result; //initializes a varialbe of type any to hold the array that is recieved from the search function. 
-  constructor(private searchService: SearchService, private router: Router) {}
-
+  constructor(private searchService: SearchService, private router: Router) {
+      this.router.navigate(['/trend.component.html']);
+  }
   search() {
     this.searchService.search(this.term)
       .subscribe(data => {
         this.result = data;//stores an array of the results in the result variable
         this.searchService.setResult(this.result);//stores the result in searchServices result variable
-        this.router.navigate(['/test.component.html']);//routes to the results page
+        this.router.navigate(['/loader.component.html']);//routes to the results page
       });
   }
 }

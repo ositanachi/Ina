@@ -17,4 +17,5 @@ export class SearchService {
   getResult(){//returns the value stored in search services result
     return this.result;
   }
+  
 }

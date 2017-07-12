@@ -1,0 +1,18 @@
+<div fxLayoutAlign="center center">
+  <div fxLayout="column">
+    <div fxLayout="row" fxLayout="center center">
+      <div>
+        <h4>Trending Searches</h4>
+      </div>
+      <div><i class="material-icons white">trending_up</i>
+      </div>
+    </div>
+    <ul>
+      <div>
+        <li *ngFor="let trend of trends">
+          {{ trend }}
+        </li>
+      </div>
+    </ul>
+  </div>
+</div>

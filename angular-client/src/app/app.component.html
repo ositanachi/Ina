@@ -6,9 +6,13 @@
 
     <div fxLayout="row" fxLayout="center center">
       <div>
-        <md-input-container routerLink="/trend.component.html">
+        <!--<md-input-container routerLink="/trend.component.html">-->
+        <md-input-container>        
           <input mdInput [(ngModel)]="term" name="term" placeholder="" type="text" required>
         </md-input-container>
+      </div>
+      <div>
+        <button (click)="term = ''">clear</button>
       </div>
       <div>
         <i class="material-icons white" (click)="search()">search</i>
